@@ -1,11 +1,11 @@
 package com.yedam.java.check;
 
-public class MaxScore {
+public class MaxScore2 {
 	private int idx = -1;
 	private int score = 0;
 	
-	public MaxScore() {}
-	public MaxScore(int idx, int score) {
+	public MaxScore2() {}
+	public MaxScore2(int idx, int score) {
 		this.idx = idx;
 		this.score = score;
 	}
