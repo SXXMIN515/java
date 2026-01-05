@@ -15,6 +15,7 @@ public class KeyExample {
 		// 값을 읽을때
 		String name = map.get(new Member("A"));
 		System.out.println(name);
+	
 	}
 
 }

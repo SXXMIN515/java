@@ -25,6 +25,12 @@ public class Member {
 	public int hashCode() {
 		return this.id.hashCode();
 	}
-	
 
+	@Override
+	public String toString() {
+		// 직렬화(Serialize, 객체를 문장으로 변화) 메서드
+		return "Member - id : " + this.id;
+	}
+	
+	
 }
