@@ -1,4 +1,4 @@
-package com.yedam.java.check;
+package com.yedam.java.package3;
 
 public class MaxScore2 {
 	private int idx = -1;
