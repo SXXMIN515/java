@@ -14,13 +14,13 @@ public class MaxScore {
 	
 	// 메소드
 	public int getIdx() {
-		return idx;
+		return this.idx;
 	}
 	public void setIdx(int idx) {
 		this.idx = idx;
 	}
 	public int getScore() {
-		return score;
+		return this.score;
 	}
 	public void setScore(int score) {
 		this.score = score;

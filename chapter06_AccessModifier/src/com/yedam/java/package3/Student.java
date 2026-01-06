@@ -18,25 +18,25 @@ public class Student {
 	
 	// 메소드 => getter/setter
 	public String getName() {
-		return name;
+		return this.name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
 	public int getKorScore() {
-		return korScore;
+		return this.korScore;
 	}
 	public void setKorScore(int korScore) {
 		this.korScore = korScore;
 	}
 	public int getMathScore() {
-		return mathScore;
+		return this.mathScore;
 	}
 	public void setMathScore(int mathScore) {
 		this.mathScore = mathScore;
 	}
 	public int getEngScore() {
-		return engScore;
+		return this.engScore;
 	}
 	public void setEngScore(int engScore) {
 		this.engScore = engScore;
