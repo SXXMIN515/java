@@ -9,6 +9,8 @@ public class CommonExample {
 			System.out.println("result : " + result);
 		});
 		
+		// 메소드 참조 : 이중콜론 연산자
+		action((x,y)-> Math.max(x, y));
 		action(Math::max);
 	}
 	
