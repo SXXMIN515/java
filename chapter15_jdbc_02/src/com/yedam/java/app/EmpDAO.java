@@ -1,5 +1,7 @@
 package com.yedam.java.app;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -7,14 +9,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 // DAO(Data Access Object)
 public class EmpDAO { // 나중에 부모클래스이자 추상클래스가 될거임
 	// Oracle 연결정보
-	private final String driver = "oracle.jdbc.OracleDriver";
-	private final String url = "jdbc:oracle:thin:@localhost:1521:xe";
-	private final String username = "hr";
-	private final String password = "hr";
+	private final String driver;
+	private final String url;
+	private final String username;
+	private final String password;
 
 	// 각 메소드에서 공통적으로 사용하는 필드
 	private Connection conn = null;
@@ -24,7 +27,27 @@ public class EmpDAO { // 나중에 부모클래스이자 추상클래스가 될�
 	// 싱글톤
 	private static EmpDAO empDAO = null;
 	
-	private EmpDAO() {}
+	private EmpDAO() {
+		// 파일경로
+		String resourcePath = "config/db.properties";
+		Properties properties = new Properties();
+		
+		// 파일 읽어들이는 입력스트림
+		// getClassLoader() -> 프로젝트 내에서 관리하는 걸 가져오기 위해 프로젝트 전체 경로를 가져옴 (*논리적인 파일 위치가 중요하지 물리적인 위치는 중요하지 않음)
+		InputStream is = EmpDAO.class.getClassLoader().getResourceAsStream(resourcePath);
+		
+		try {
+			// 해당 스트림을 통해 properties(key, value) 형태로 파일 전체를 읽어들임
+			properties.load(is);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		// getProperty -> property는 속성인데 키를 넘기면 저장한 속성(value 값)을 넘겨줌
+		driver = properties.getProperty("jdbc_driver");
+		url = properties.getProperty("db_url");
+		username = properties.getProperty("db_username");
+		password = properties.getProperty("db_password");
+	}
 	
 	public static EmpDAO getInstance() {
 		if(empDAO == null) {
